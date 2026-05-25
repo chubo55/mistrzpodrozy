@@ -75,12 +75,12 @@ placeholder="Np. 2 osoby z psem do 3000 zł">
 
 <br>
 
-<select>
+<select id="locationType">
 <option>Polska</option>
 <option>Zagranica</option>
 </select>
 
-<select>
+<select id="mealType">
 <option>HB</option>
 <option>All Inclusive</option>
 </select>
@@ -99,11 +99,16 @@ Znajdź mi wyjazd
 
 function searchTrip(){
 
-let text = document
+let text=document
 .getElementById("tripInput")
 .value.toLowerCase();
 
-let result=document.getElementById("result");
+let location=document
+.getElementById("locationType")
+.value;
+
+let result=document
+.getElementById("result");
 
 if(text.includes("pies")){
 
@@ -115,7 +120,8 @@ result.innerHTML=`
 `;
 
 }
-else if(text.includes("zagranica")){
+
+else if(location=="Zagranica"){
 
 result.innerHTML=`
 <h2>🏖 Kreta</h2>
@@ -125,6 +131,7 @@ result.innerHTML=`
 `;
 
 }
+
 else{
 
 result.innerHTML=`
