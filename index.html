@@ -93,25 +93,50 @@ Znajdź mi wyjazd
 
 </div>
 
-<div class="result" id="result">
-
-<h2>🏖 Kreta</h2>
-
-<p>💰 Cena: 2599 zł</p>
-
-<p>✈️ Lot + Hotel + HB</p>
-
-<p>⭐ Ocena AI: 9/10</p>
-
-</div>
-
+<div class="result" id="result"></div>
 
 <script>
 
 function searchTrip(){
 
-document.getElementById("result")
-.style.display="block";
+let text = document
+.getElementById("tripInput")
+.value.toLowerCase();
+
+let result=document.getElementById("result");
+
+if(text.includes("pies")){
+
+result.innerHTML=`
+<h2>🐕 Dębki</h2>
+<p>💰 Cena: 2899 zł</p>
+<p>🏡 Domek + HB</p>
+<p>⭐ Ocena AI: 9/10</p>
+`;
+
+}
+else if(text.includes("zagranica")){
+
+result.innerHTML=`
+<h2>🏖 Kreta</h2>
+<p>💰 Cena: 2599 zł</p>
+<p>✈️ Lot + Hotel + HB</p>
+<p>⭐ Ocena AI: 9/10</p>
+`;
+
+}
+else{
+
+result.innerHTML=`
+<h2>⛰ Zakopane</h2>
+<p>💰 Cena: 2199 zł</p>
+<p>🏨 Pensjonat + HB</p>
+<p>⭐ Ocena AI: 8/10</p>
+`;
+
+}
+
+result.style.display="block";
 
 }
 
