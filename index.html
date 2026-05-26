@@ -113,7 +113,109 @@ Ułóż mój plan
 
 <script>
 
-function generatePlan(){
+function function generatePlan(){
+
+let place=document
+.getElementById("place").value;
+
+let days=document
+.getElementById("days").value;
+
+let interest=document
+.getElementById("interest").value;
+
+let result=document
+.getElementById("result");
+
+let plan="";
+
+if(interest=="Góry"){
+
+plan=`
+
+<h3>Dzień 1</h3>
+
+<p>08:30 Śniadanie</p>
+
+<p>10:00 Szlak górski</p>
+
+<p>13:00 Schronisko</p>
+
+<p>16:00 Punkt widokowy</p>
+
+<p>20:00 Zachód słońca</p>
+
+`;
+
+}
+
+else if(interest=="Jedzenie"){
+
+plan=`
+
+<h3>Dzień 1</h3>
+
+<p>09:00 Śniadanie regionalne</p>
+
+<p>12:00 Lokalna restauracja</p>
+
+<p>15:00 Kawiarnia</p>
+
+<p>19:00 Kolacja regionalna</p>
+
+`;
+
+}
+
+else if(interest=="Nocne atrakcje"){
+
+plan=`
+
+<h3>Dzień 1</h3>
+
+<p>10:00 Zwiedzanie</p>
+
+<p>18:00 Kolacja</p>
+
+<p>21:00 Punkt widokowy nocą</p>
+
+<p>23:00 Spacer po mieście</p>
+
+`;
+
+}
+
+else{
+
+plan=`
+
+<h3>Dzień 1</h3>
+
+<p>09:00 Zwiedzanie atrakcji</p>
+
+<p>12:00 Muzeum</p>
+
+<p>15:00 Zamek</p>
+
+<p>20:00 Wieczorny spacer</p>
+
+`;
+
+}
+
+result.innerHTML=`
+
+<h2>📍 ${place}</h2>
+
+${plan}
+
+<p>📅 Długość pobytu: ${days} dni</p>
+
+`;
+
+result.style.display="block";
+
+}
 
 let place=document
 .getElementById("place").value;
