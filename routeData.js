@@ -8,20 +8,26 @@ stops:[
 
 {
 icon:"🏰",
-name:"Zamek po drodze",
-time:"60 min"
+name:"Zamek Książ",
+time:"90 min",
+rating:"4.8/5",
+price:"35 zł"
 },
 
 {
 icon:"🍽",
-name:"Dobra i niedroga restauracja",
-time:"45 min"
+name:"Karczma Polska",
+time:"45 min",
+rating:"4.7/5",
+price:"25–45 zł"
 },
 
 {
 icon:"🌲",
-name:"Punkt widokowy",
-time:"30 min"
+name:"Punkt widokowy Góry Sowie",
+time:"30 min",
+rating:"4.9/5",
+price:"Darmowe"
 }
 
 ]
