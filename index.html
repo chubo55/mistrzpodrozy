@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Mistrz Podróży AI</title>
 
@@ -35,37 +35,35 @@ box-shadow:0 5px 15px rgba(0,0,0,.1);
 }
 
 input,select,button{
-
 width:100%;
 padding:15px;
 margin-top:12px;
 border-radius:10px;
 border:1px solid #ddd;
 box-sizing:border-box;
-
 }
 
 button{
-
 background:#0b72ff;
 color:white;
 border:none;
 cursor:pointer;
+font-size:16px;
+}
 
+.day{
+margin-top:15px;
+padding:15px;
+background:#f7f7f7;
+border-radius:12px;
 }
 
 #result{
-
 display:none;
 margin-top:20px;
-padding:20px;
-background:#f5f5f5;
-border-radius:15px;
-
 }
 
 </style>
-
 </head>
 
 <body>
@@ -73,7 +71,6 @@ border-radius:15px;
 <header>
 
 <h1>✈️ Mistrz Podróży</h1>
-
 <p>Twój osobisty AI planujący podróże</p>
 
 </header>
@@ -91,6 +88,7 @@ placeholder="Dokąd jedziesz?">
 
 <input
 id="days"
+type="number"
 placeholder="Ile dni?">
 
 <select id="interest">
@@ -108,7 +106,6 @@ Ułóż mój plan
 
 </button>
 
-
 <div id="result"></div>
 
 </div>
@@ -120,13 +117,17 @@ Ułóż mój plan
 
 document
 .getElementById("planButton")
-.addEventListener("click", function(){
+.addEventListener("click",generatePlan);
+
+function generatePlan(){
 
 const place=
 document.getElementById("place").value;
 
 const days=
-document.getElementById("days").value;
+parseInt(
+document.getElementById("days").value
+);
 
 const interest=
 document.getElementById("interest").value;
@@ -134,56 +135,70 @@ document.getElementById("interest").value;
 const result=
 document.getElementById("result");
 
-let plan="";
+let fullPlan="";
+
+for(let i=1;i<=days;i++){
+
+let activities="";
 
 if(interest==="Góry"){
 
-plan=`
-🏔 Dzień 1<br><br>
-
-08:30 Śniadanie<br>
-10:00 Szlak górski<br>
-13:00 Schronisko<br>
-16:00 Punkt widokowy<br>
-20:00 Zachód słońca
+activities=`
+🥾 Szlak górski<br>
+🏔 Punkt widokowy<br>
+🍲 Schronisko<br>
+🌅 Zachód słońca
 `;
 
 }
 
 else if(interest==="Jedzenie"){
 
-plan=`
-🍽 Dzień 1<br><br>
-
-09:00 Regionalne śniadanie<br>
-12:00 Restauracja<br>
-15:00 Kawiarnia<br>
-19:00 Kolacja
+activities=`
+🍽 Regionalne śniadanie<br>
+🥘 Lokalna restauracja<br>
+☕ Kawiarnia<br>
+🍷 Kolacja
 `;
 
 }
 
 else if(interest==="Nocne atrakcje"){
 
-plan=`
-🌙 Dzień 1<br><br>
-
-18:00 Kolacja<br>
-21:00 Punkt widokowy<br>
-23:00 Spacer nocny
+activities=`
+🌇 Spacer wieczorny<br>
+🌙 Punkt widokowy<br>
+📸 Nocne zdjęcia
 `;
 
 }
 
 else{
 
-plan=`
-🏰 Dzień 1<br><br>
+activities=`
+🏰 Zwiedzanie<br>
+🖼 Muzeum<br>
+📍 Atrakcje miasta
+`;
 
-09:00 Zwiedzanie<br>
-12:00 Muzeum<br>
-15:00 Atrakcje<br>
-20:00 Spacer
+}
+
+fullPlan += `
+
+<div class="day">
+
+<h3>📅 Dzień ${i}</h3>
+
+<p>
+
+08:30 Śniadanie<br><br>
+
+${activities}
+
+</p>
+
+</div>
+
 `;
 
 }
@@ -192,15 +207,19 @@ result.innerHTML=`
 
 <h2>📍 ${place || "Wybrana lokalizacja"}</h2>
 
-<p>📅 ${days || "1"} dni</p>
+<p>
 
-${plan}
+Plan na ${days} dni
+
+</p>
+
+${fullPlan}
 
 `;
 
 result.style.display="block";
 
-});
+}
 
 </script>
 
