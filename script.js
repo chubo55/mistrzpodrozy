@@ -44,7 +44,83 @@ html+=`
 }
 
 document
-.getElementById("result")
+.getElementById("routeBtn")
+.addEventListener(
+"click",
+generateRoute
+);
+
+function generateRoute(){
+
+const from=
+document.getElementById("from").value;
+
+const to=
+document.getElementById("to").value;
+
+const key=
+from+"-"+to;
+
+const route=
+routes[key];
+
+if(!route){
+
+document
+.getElementById("routeResult")
+.innerHTML=
+"❌ Brak danych dla tej trasy";
+
+return;
+
+}
+
+let html=`
+
+<h3>
+
+📍 ${from} → ${to}
+
+</h3>
+
+<p>
+
+⏱ Czas: ${route.travelTime}
+
+</p>
+
+`;
+
+route.stops.forEach(stop=>{
+
+html+=`
+
+<div class="day">
+
+<h4>
+
+${stop.icon}
+
+${stop.name}
+
+</h4>
+
+<p>
+
+⏱ ${stop.time}
+
+</p>
+
+</div>
+
+`;
+
+});
+
+document
+.getElementById(
+"routeResult"
+)
 .innerHTML=html;
 
 }
