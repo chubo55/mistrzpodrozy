@@ -136,6 +136,27 @@ for(let i=1;i<=days;i++){
 
 let dayPlan=
 plans[interest][(i-1)%plans[interest].length];
+  const weatherTypes=[
+"☀️ Słonecznie 24°C",
+"⛅ Zachmurzenie 21°C",
+"🌧 Deszcz 17°C"
+];
+
+const weather=
+weatherTypes[
+Math.floor(
+Math.random()*weatherTypes.length
+)
+];
+
+if(weather.includes("Deszcz")){
+
+dayPlan=[
+"🏰 Atrakcja pod dachem",
+"☕ Kawiarnia + regionalne jedzenie"
+];
+
+}
 
 html+=`
 
