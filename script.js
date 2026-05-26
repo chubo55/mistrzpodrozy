@@ -1,6 +1,9 @@
 document
 .getElementById("btn")
-.addEventListener("click",generatePlan);
+.addEventListener(
+"click",
+generatePlan
+);
 
 function generatePlan(){
 
@@ -16,8 +19,11 @@ const interest=
 document.getElementById("interest").value;
 
 let html=`
+
 <h2>📍 ${place}</h2>
-<p>📅 ${days} dni</p>
+
+<p>🗓 ${days} dni</p>
+
 `;
 
 for(let i=1;i<=days;i++){
@@ -44,19 +50,34 @@ html+=`
 }
 
 document
+.getElementById("result")
+.innerHTML=html;
+
+}
+
+
+
+document
 .getElementById("routeBtn")
 .addEventListener(
 "click",
 generateRoute
 );
 
+
 function generateRoute(){
 
 const from=
-document.getElementById("from").value;
+document
+.getElementById("from")
+.value
+.trim();
 
 const to=
-document.getElementById("to").value;
+document
+.getElementById("to")
+.value
+.trim();
 
 const key=
 from+"-"+to;
@@ -68,8 +89,19 @@ if(!route){
 
 document
 .getElementById("routeResult")
-.innerHTML=
-"❌ Brak danych dla tej trasy";
+.innerHTML=`
+
+<div class="day">
+
+❌ Brak danych dla:
+
+<br><br>
+
+${from} → ${to}
+
+</div>
+
+`;
 
 return;
 
@@ -85,7 +117,7 @@ let html=`
 
 <p>
 
-⏱ Czas: ${route.travelTime}
+⏱ ${route.travelTime}
 
 </p>
 
@@ -100,7 +132,6 @@ html+=`
 <h4>
 
 ${stop.icon}
-
 ${stop.name}
 
 </h4>
