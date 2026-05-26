@@ -1,68 +1,28 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Mistrz Podróży AI</title>
 
-<style>
+<link rel="stylesheet" href="style.css">
 
-body{
-font-family:Arial,sans-serif;
-background:#eef2f7;
-padding:20px;
-}
-
-.box{
-background:white;
-padding:25px;
-border-radius:20px;
-max-width:900px;
-margin:auto;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
-}
-
-input,select,button{
-width:100%;
-padding:14px;
-margin-top:10px;
-border-radius:10px;
-border:1px solid #ddd;
-box-sizing:border-box;
-}
-
-button{
-background:#0b72ff;
-color:white;
-border:none;
-cursor:pointer;
-}
-
-.day{
-background:#f5f5f5;
-padding:15px;
-margin-top:15px;
-border-radius:10px;
-}
-
-.weather{
-font-weight:bold;
-margin:8px 0;
-}
-
-</style>
 </head>
 
 <body>
 
 <div class="box">
 
-<h1>🤖 Mój Plan AI</h1>
+<h1>🤖 Mistrz Podróży AI</h1>
 
-<input id="place"
+<input
+id="place"
 placeholder="Dokąd jedziesz?">
 
-<input id="days"
+<input
+id="days"
 type="number"
 placeholder="Ile dni?">
 
@@ -70,134 +30,23 @@ placeholder="Ile dni?">
 
 <option>Góry</option>
 <option>Zwiedzanie</option>
-<option>Jedzenie</option>
-<option>Nocne atrakcje</option>
 
 </select>
 
 <button id="btn">
+
 Ułóż mój plan
+
 </button>
 
 <div id="result"></div>
 
 </div>
 
+<script src="data.js"></script>
 
-<script>
-
-const plans={
-
-"Góry":[
-["🥾 Spacer po mieście","🍽 Regionalna restauracja"],
-["🏔 Stóg Izerski","🍲 Schronisko"],
-["🌲 Szlak leśny","📸 Punkt widokowy"],
-["🚗 Wycieczka autem","🏰 Lokalna atrakcja"],
-["🌄 Wschód słońca","☕ Kawiarnia"],
-["🌙 Wieczorny spacer","📷 Nocne zdjęcia"]
-],
-
-"Zwiedzanie":[
-["🏰 Zamek","🖼 Muzeum"],
-["🏛 Rynek","☕ Kawiarnia"],
-["📍 Atrakcje miasta","🍽 Restauracja"],
-["🎭 Lokalna kultura","📸 Zdjęcia"]
-],
-
-"Jedzenie":[
-["🍽 Regionalna restauracja","☕ Kawiarnia"],
-["🥘 Lokalny obiad","🍷 Kolacja"],
-["🍰 Desery","🚶 Spacer"]
-],
-
-"Nocne atrakcje":[
-["🌇 Zachód słońca","📸 Zdjęcia"],
-["🌙 Spacer nocny","🍽 Kolacja"],
-["🌃 Punkt widokowy","📷 Fotografie"]
-]
-
-};
-
-
-document
-.getElementById("btn")
-.onclick=function(){
-
-const place=
-document.getElementById("place").value;
-
-const days=
-parseInt(
-document.getElementById("days").value
-)||1;
-
-const interest=
-document.getElementById("interest").value;
-
-const weatherTypes=[
-"☀️ Słonecznie 24°C",
-"⛅ Zachmurzenie 21°C",
-"🌧 Deszcz 17°C"
-];
-
-let html=`
-
-<h2>📍 ${place}</h2>
-
-<p>📅 ${days} dni</p>
-
-`;
-
-for(let i=1;i<=days;i++){
-
-let dayPlan=
-plans[interest][
-(i-1)%plans[interest].length
-];
-
-const weather=
-weatherTypes[
-Math.floor(
-Math.random()*weatherTypes.length
-)
-];
-
-if(weather.includes("Deszcz")){
-
-dayPlan=[
-"🏰 Atrakcja pod dachem",
-"☕ Regionalna restauracja"
-];
-
-}
-
-html+=`
-
-<div class="day">
-
-<h3>📅 Dzień ${i}</h3>
-
-<div class="weather">
-${weather}
-</div>
-
-<p>${dayPlan[0]}</p>
-
-<p>${dayPlan[1]}</p>
-
-</div>
-
-`;
-
-}
-
-document
-.getElementById("result")
-.innerHTML=html;
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
+
 </html>
