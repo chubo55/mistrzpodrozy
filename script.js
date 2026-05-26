@@ -200,3 +200,39 @@ box.style.display==="none"
 : "none";
 
 }
+function addFavorite(place){
+
+let favorites=
+JSON.parse(
+localStorage.getItem(
+"favorites"
+)
+) || [];
+
+if(
+!favorites.includes(place)
+){
+
+favorites.push(place);
+
+localStorage.setItem(
+"favorites",
+JSON.stringify(
+favorites
+)
+);
+
+alert(
+"❤️ Dodano: " + place
+);
+
+}
+else{
+
+alert(
+"To miejsce już jest zapisane"
+);
+
+}
+
+}
