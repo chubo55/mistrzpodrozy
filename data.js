@@ -3,16 +3,22 @@ const plans={
 "Góry":[
 ["🥾 Spacer po mieście","🍽 Regionalna restauracja"],
 ["🏔 Stóg Izerski","🍲 Schronisko"],
-["🌲 Szlak leśny","📸 Punkt widokowy"],
-["🚗 Wycieczka autem","🏰 Lokalna atrakcja"],
-["🌄 Wschód słońca","☕ Kawiarnia"],
-["🌙 Wieczorny spacer","📷 Nocne zdjęcia"]
+["🌲 Szlak leśny","📸 Punkt widokowy"]
 ],
 
 "Zwiedzanie":[
 ["🏰 Zamek","🖼 Muzeum"],
-["🏛 Rynek","☕ Kawiarnia"],
-["📍 Atrakcje miasta","🍽 Restauracja"]
+["🏛 Rynek","☕ Kawiarnia"]
+],
+
+"Jedzenie":[
+["🍽 Restauracja","☕ Kawiarnia"],
+["🥘 Regionalne jedzenie","🍷 Kolacja"]
+],
+
+"Nocne atrakcje":[
+["🌙 Spacer nocny","📷 Zdjęcia"],
+["🌃 Punkt widokowy","🍽 Kolacja"]
 ]
 
 };
