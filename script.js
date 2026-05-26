@@ -138,7 +138,17 @@ ${stop.name}
 
 <p>
 
+⏱ <p>
 ⏱ ${stop.time}
+</p>
+
+<p>
+⭐ ${stop.rating}
+</p>
+
+<p>
+💰 ${stop.price}
+</p>
 
 </p>
 
