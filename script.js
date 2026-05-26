@@ -22,7 +22,7 @@ let html=`
 
 <h2>📍 ${place}</h2>
 
-<p>🗓 ${days} dni</p>
+<p>📅 ${days} dni</p>
 
 `;
 
@@ -54,7 +54,6 @@ document
 .innerHTML=html;
 
 }
-
 
 
 document
@@ -167,46 +166,16 @@ style="display:none;margin-top:10px;">
 
 });
 
-html+=`
-
-<div class="day">
-
-<h4>
-
-${stop.icon}
-${stop.name}
-
-</h4>
-
-<p>
-
-⏱ <p>
-⏱ ${stop.time}
-</p>
-
-<p>
-⭐ ${stop.rating}
-</p>
-
-<p>
-💰 ${stop.price}
-</p>
-
-</p>
-
-</div>
-
-`;
-
-});
-
 document
 .getElementById(
 "routeResult"
 )
 .innerHTML=html;
 
-}function showDetails(index){
+}
+
+
+function showDetails(index){
 
 const box=
 document.getElementById(
@@ -221,5 +190,7 @@ box.style.display="block";
 else{
 
 box.style.display="none";
+
+}
 
 }
