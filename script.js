@@ -158,6 +158,25 @@ style="display:none;margin-top:10px;">
 
 <p>📝 ${stop.description}</p>
 
+<p>
+
+<a href="${stop.map}" target="_blank">
+
+🗺 Otwórz mapę
+
+</a>
+
+</p>
+
+<p>
+
+<a href="${stop.ticket}" target="_blank">
+
+🎟 Kup bilet
+
+</a>
+
+</p>
 </div>
 
 </div>
