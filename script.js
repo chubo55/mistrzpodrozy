@@ -126,6 +126,17 @@ Szczegóły
 
 </button>
 
+<button
+onclick="addFavorite('${stop.name}')">
+
+❤️ Dodaj do ulubionych
+
+</button>
+
+Szczegóły
+
+</button>
+
 <div
 id="details${index}"
 style="display:none;">
