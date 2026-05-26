@@ -7,6 +7,7 @@
 <title>Mistrz Podróży</title>
 
 <style>
+
 body{
 margin:0;
 font-family:Arial,sans-serif;
@@ -20,128 +21,132 @@ text-align:center;
 color:white;
 }
 
-.search-box{
-width:80%;
+.box{
+width:85%;
 max-width:900px;
-margin:auto;
-margin-top:-30px;
+margin:30px auto;
 background:white;
 padding:25px;
 border-radius:20px;
-box-shadow:0 5px 20px rgba(0,0,0,.1);
-text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
 }
 
 input,select{
+width:100%;
 padding:12px;
-margin:8px;
+margin-top:10px;
 border-radius:10px;
 border:1px solid #ddd;
 }
 
 button{
-padding:12px 25px;
+width:100%;
+padding:15px;
+margin-top:15px;
 background:#0b72ff;
 color:white;
 border:none;
 border-radius:10px;
+font-size:16px;
 cursor:pointer;
 }
 
 .result{
-width:80%;
-max-width:900px;
-margin:30px auto;
-background:white;
-padding:20px;
-border-radius:20px;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
 display:none;
+margin-top:20px;
+padding:20px;
+background:#f5f5f5;
+border-radius:15px;
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
+
 <h1>✈️ Mistrz Podróży</h1>
-<p>Znajdę najtańszy i najlepszy wyjazd dla Ciebie</p>
+
+<p>Twój osobisty AI planujący podróże</p>
+
 </header>
 
-<div class="search-box">
 
-<input id="tripInput"
-placeholder="Np. 2 osoby z psem do 3000 zł">
+<div class="box">
 
-<br>
+<h2>🤖 Mój Plan AI</h2>
 
-<select id="locationType">
-<option>Polska</option>
-<option>Zagranica</option>
+<input id="place"
+placeholder="Dokąd jedziesz?">
+
+<input id="days"
+placeholder="Ile dni?">
+
+<select id="transport">
+
+<option>Auto</option>
+<option>Bez auta</option>
+
 </select>
 
-<select id="mealType">
-<option>HB</option>
-<option>All Inclusive</option>
+<select id="interest">
+
+<option>Góry</option>
+<option>Zwiedzanie</option>
+<option>Jedzenie</option>
+<option>Nocne atrakcje</option>
+
 </select>
 
-<br>
+<button onclick="generatePlan()">
 
-<button onclick="searchTrip()">
-Znajdź mi wyjazd
+Ułóż mój plan
+
 </button>
 
-</div>
 
 <div class="result" id="result"></div>
 
+</div>
+
+
 <script>
 
-function searchTrip(){
+function generatePlan(){
 
-let text=document
-.getElementById("tripInput")
-.value.toLowerCase();
+let place=document
+.getElementById("place").value;
 
-let location=document
-.getElementById("locationType")
-.value;
+let days=document
+.getElementById("days").value;
+
+let interest=document
+.getElementById("interest").value;
 
 let result=document
 .getElementById("result");
 
-if(text.includes("pies")){
 
 result.innerHTML=`
-<h2>🐕 Dębki</h2>
-<p>💰 Cena: 2899 zł</p>
-<p>🏡 Domek + HB</p>
-<p>⭐ Ocena AI: 9/10</p>
+
+<h2>📍 ${place}</h2>
+
+<h3>Dzień 1</h3>
+
+<p>09:00 Śniadanie</p>
+
+<p>10:30 ${interest}</p>
+
+<p>13:00 Regionalny obiad</p>
+
+<p>16:00 Atrakcje</p>
+
+<p>20:00 Wieczorny spacer</p>
+
+<p>📅 Długość pobytu: ${days} dni</p>
+
 `;
-
-}
-
-else if(location=="Zagranica"){
-
-result.innerHTML=`
-<h2>🏖 Kreta</h2>
-<p>💰 Cena: 2599 zł</p>
-<p>✈️ Lot + Hotel + HB</p>
-<p>⭐ Ocena AI: 9/10</p>
-`;
-
-}
-
-else{
-
-result.innerHTML=`
-<h2>⛰ Zakopane</h2>
-<p>💰 Cena: 2199 zł</p>
-<p>🏨 Pensjonat + HB</p>
-<p>⭐ Ocena AI: 8/10</p>
-`;
-
-}
 
 result.style.display="block";
 
