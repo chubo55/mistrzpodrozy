@@ -15,6 +15,8 @@ price:"35 zł",
 parking:"Tak",
 description:"Jeden z największych zamków w Polsce",
 photo:"📸 Idealny na zdjęcia"
+map:"#",
+ticket:"#"
 },
 
 {
@@ -26,6 +28,8 @@ price:"25–45 zł",
 parking:"Tak",
 description:"Regionalne jedzenie i duże porcje",
 photo:"📸 Klimatyczne wnętrze"
+map:"#",
+ticket:"#"
 },
 
 {
@@ -37,6 +41,8 @@ price:"Darmowe",
 parking:"Tak",
 description:"Widoki na góry i lasy",
 photo:"📸 Zachody słońca"
+map:"#",
+ticket:"#"
 }
 
 ]
