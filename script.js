@@ -1,17 +1,12 @@
 document
 .getElementById("btn")
-.addEventListener(
-"click",
-generatePlan
-);
+.addEventListener("click",generatePlan);
 
 function generatePlan(){
 
-const place=
-document.getElementById("place").value;
+const place=document.getElementById("place").value;
 
-const days=
-parseInt(
+const days=parseInt(
 document.getElementById("days").value
 )||1;
 
@@ -19,11 +14,8 @@ const interest=
 document.getElementById("interest").value;
 
 let html=`
-
 <h2>📍 ${place}</h2>
-
 <p>📅 ${days} dni</p>
-
 `;
 
 for(let i=1;i<=days;i++){
@@ -63,7 +55,6 @@ document
 generateRoute
 );
 
-
 function generateRoute(){
 
 const from=
@@ -88,19 +79,8 @@ if(!route){
 
 document
 .getElementById("routeResult")
-.innerHTML=`
-
-<div class="day">
-
-❌ Brak danych dla:
-
-<br><br>
-
-${from} → ${to}
-
-</div>
-
-`;
+.innerHTML=
+"❌ Brak danych";
 
 return;
 
@@ -124,7 +104,7 @@ let html=`
 
 route.stops.forEach((stop,index)=>{
 
-html += `
+html+=`
 
 <div class="day">
 
@@ -134,8 +114,6 @@ ${stop.icon}
 ${stop.name}
 
 </h4>
-
-<p>⏱ ${stop.time}</p>
 
 <p>⭐ ${stop.rating}</p>
 
@@ -150,17 +128,19 @@ Szczegóły
 
 <div
 id="details${index}"
-style="display:none;margin-top:10px;">
+style="display:none;">
 
-<p>🚗 Parking: ${stop.parking}</p>
+<p>🚗 ${stop.parking}</p>
 
 <p>${stop.photo}</p>
 
-<p>📝 ${stop.description}</p>
+<p>${stop.description}</p>
 
 <p>
 
-<a href="${stop.map}" target="_blank">
+<a
+href="${stop.map}"
+target="_blank">
 
 🗺 Otwórz mapę
 
@@ -170,13 +150,16 @@ style="display:none;margin-top:10px;">
 
 <p>
 
-<a href="${stop.ticket}" target="_blank">
+<a
+href="${stop.ticket}"
+target="_blank">
 
 🎟 Kup bilet
 
 </a>
 
 </p>
+
 </div>
 
 </div>
@@ -193,7 +176,6 @@ document
 
 }
 
-
 function showDetails(index){
 
 const box=
@@ -201,15 +183,9 @@ document.getElementById(
 "details"+index
 );
 
-if(box.style.display==="none"){
-
-box.style.display="block";
-
-}
-else{
-
-box.style.display="none";
-
-}
+box.style.display=
+box.style.display==="none"
+? "block"
+: "none";
 
 }
