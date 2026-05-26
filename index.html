@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>Mistrz Podróży AI</title>
 
 <style>
@@ -14,20 +13,10 @@ font-family:Arial,sans-serif;
 background:#eef2f7;
 }
 
-header{
-background:linear-gradient(90deg,#0b72ff,#00b7ff);
-padding:30px;
-text-align:center;
-color:white;
-}
-
 .container{
-width:85%;
+width:90%;
 max-width:900px;
 margin:30px auto;
-}
-
-.card{
 background:white;
 padding:25px;
 border-radius:20px;
@@ -36,7 +25,7 @@ box-shadow:0 5px 15px rgba(0,0,0,.1);
 
 input,select,button{
 width:100%;
-padding:15px;
+padding:14px;
 margin-top:12px;
 border-radius:10px;
 border:1px solid #ddd;
@@ -48,39 +37,24 @@ background:#0b72ff;
 color:white;
 border:none;
 cursor:pointer;
-font-size:16px;
 }
 
 .day{
-margin-top:15px;
+background:#f5f5f5;
 padding:15px;
-background:#f7f7f7;
-border-radius:12px;
-}
-
-#result{
-display:none;
-margin-top:20px;
+margin-top:15px;
+border-radius:10px;
 }
 
 </style>
+
 </head>
 
 <body>
 
-<header>
-
-<h1>✈️ Mistrz Podróży</h1>
-<p>Twój osobisty AI planujący podróże</p>
-
-</header>
-
-
 <div class="container">
 
-<div class="card">
-
-<h2>🤖 Mój Plan AI</h2>
+<h1>🤖 Mój Plan AI</h1>
 
 <input
 id="place"
@@ -100,7 +74,7 @@ placeholder="Ile dni?">
 
 </select>
 
-<button id="planButton">
+<button id="btn">
 
 Ułóż mój plan
 
@@ -110,14 +84,12 @@ Ułóż mój plan
 
 </div>
 
-</div>
-
-
 <script>
 
 document
-.getElementById("planButton")
+.getElementById("btn")
 .addEventListener("click",generatePlan);
+
 
 function generatePlan(){
 
@@ -125,77 +97,75 @@ const place=
 document.getElementById("place").value;
 
 const days=
-parseInt(
+Number(
 document.getElementById("days").value
 );
 
 const interest=
 document.getElementById("interest").value;
 
-const result=
-document.getElementById("result");
+let html=`
 
-let fullPlan="";
+<h2>📍 ${place}</h2>
+
+<p>📅 ${days} dni</p>
+
+`;
 
 for(let i=1;i<=days;i++){
 
-let activities="";
+let activity="";
 
 if(interest==="Góry"){
 
-activities=`
-🥾 Szlak górski<br>
-🏔 Punkt widokowy<br>
-🍲 Schronisko<br>
-🌅 Zachód słońca
+activity=`
+08:30 Śniadanie<br>
+10:00 Szlak górski<br>
+13:00 Schronisko<br>
+16:00 Punkt widokowy<br>
+20:00 Zachód słońca
 `;
 
 }
 
 else if(interest==="Jedzenie"){
 
-activities=`
-🍽 Regionalne śniadanie<br>
-🥘 Lokalna restauracja<br>
-☕ Kawiarnia<br>
-🍷 Kolacja
+activity=`
+09:00 Regionalne śniadanie<br>
+12:00 Restauracja<br>
+15:00 Kawiarnia<br>
+19:00 Kolacja
 `;
 
 }
 
 else if(interest==="Nocne atrakcje"){
 
-activities=`
-🌇 Spacer wieczorny<br>
-🌙 Punkt widokowy<br>
-📸 Nocne zdjęcia
+activity=`
+18:00 Kolacja<br>
+21:00 Punkt widokowy<br>
+23:00 Spacer nocny
 `;
 
 }
 
 else{
 
-activities=`
-🏰 Zwiedzanie<br>
-🖼 Muzeum<br>
-📍 Atrakcje miasta
+activity=`
+09:00 Zwiedzanie<br>
+12:00 Muzeum<br>
+15:00 Atrakcje
 `;
 
 }
 
-fullPlan += `
+html += `
 
 <div class="day">
 
 <h3>📅 Dzień ${i}</h3>
 
-<p>
-
-08:30 Śniadanie<br><br>
-
-${activities}
-
-</p>
+${activity}
 
 </div>
 
@@ -203,21 +173,9 @@ ${activities}
 
 }
 
-result.innerHTML=`
-
-<h2>📍 ${place || "Wybrana lokalizacja"}</h2>
-
-<p>
-
-Plan na ${days} dni
-
-</p>
-
-${fullPlan}
-
-`;
-
-result.style.display="block";
+document
+.getElementById("result")
+.innerHTML=html;
 
 }
 
