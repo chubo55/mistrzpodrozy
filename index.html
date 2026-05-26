@@ -2,34 +2,45 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mistrz Podróży</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mistrz Podróży AI</title>
 
 <style>
 body{
-font-family:Arial;
+font-family:Arial,sans-serif;
 background:#eef2f7;
 padding:20px;
 }
 
 .box{
 background:white;
-padding:20px;
+padding:25px;
 border-radius:20px;
-max-width:800px;
+max-width:900px;
 margin:auto;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
 }
 
 input,select,button{
 width:100%;
-padding:12px;
+padding:14px;
 margin-top:10px;
+border-radius:10px;
+border:1px solid #ddd;
+box-sizing:border-box;
+}
+
+button{
+background:#0b72ff;
+color:white;
+border:none;
+cursor:pointer;
 }
 
 .day{
-background:#f3f3f3;
+background:#f5f5f5;
 padding:15px;
-margin-top:10px;
+margin-top:15px;
 border-radius:10px;
 }
 </style>
@@ -62,62 +73,88 @@ Ułóż mój plan
 
 <script>
 
-const btn=document.getElementById("btn");
+const plans={
 
-btn.onclick=function(){
+"Góry":[
+["🥾 Spacer po mieście","🍽 Regionalna restauracja"],
+["🏔 Stóg Izerski","🍲 Schronisko"],
+["🌲 Szlak leśny","📸 Punkt widokowy"],
+["🚗 Wycieczka autem","🏰 Lokalna atrakcja"],
+["🌄 Wschód słońca","☕ Kawiarnia"],
+["🌙 Wieczorny spacer","📷 Nocne zdjęcia"]
+],
 
-const place=document.getElementById("place").value;
+"Zwiedzanie":[
+["🏰 Zamek","🖼 Muzeum"],
+["🏛 Rynek","☕ Kawiarnia"],
+["📍 Atrakcje miasta","🍽 Restauracja"],
+["🎭 Lokalna kultura","📸 Zdjęcia"],
+["🌇 Stare miasto","🥘 Kolacja"],
+["🌙 Spacer wieczorny","🎵 Klimatyczne miejsce"]
+],
 
-const days=parseInt(
+"Jedzenie":[
+["🥐 Śniadanie regionalne","☕ Kawiarnia"],
+["🍲 Obiad lokalny","🍰 Deser"],
+["🥘 Regionalna restauracja","🍷 Kolacja"],
+["🍔 Street food","📍 Spacer"],
+["☕ Kawiarnia","🍽 Obiad"],
+["🌙 Wieczorna restauracja","🍸 Klimatyczne miejsce"]
+],
+
+"Nocne atrakcje":[
+["🌇 Zachód słońca","📸 Zdjęcia"],
+["🌙 Spacer nocny","🍽 Kolacja"],
+["🎵 Muzyka","☕ Kawiarnia"],
+["🌃 Punkt widokowy","📷 Fotografie"],
+["🍸 Wieczorne miejsce","🚶 Spacer"],
+["🌠 Nocne niebo","🌙 Relaks"]
+]
+
+};
+
+document.getElementById("btn")
+.onclick=function(){
+
+const place=
+document.getElementById("place").value;
+
+const days=
+parseInt(
 document.getElementById("days").value
 )||1;
 
 const interest=
 document.getElementById("interest").value;
 
-let html="<h2>"+place+"</h2>";
+let html=`
+<h2>📍 ${place}</h2>
+<p>📅 ${days} dni</p>
+`;
 
 for(let i=1;i<=days;i++){
 
-html+="<div class='day'>";
+let dayPlan=
+plans[interest][(i-1)%plans[interest].length];
 
-html+="<h3>Dzień "+i+"</h3>";
+html+=`
 
-if(interest==="Góry"){
+<div class="day">
 
-html+="🥾 Szlak<br>";
-html+="🏔 Punkt widokowy<br>";
-html+="🍲 Schronisko";
+<h3>📅 Dzień ${i}</h3>
 
-}
+<p>${dayPlan[0]}</p>
 
-else if(interest==="Jedzenie"){
+<p>${dayPlan[1]}</p>
 
-html+="🍽 Restauracja<br>";
-html+="☕ Kawiarnia<br>";
-html+="🍷 Kolacja";
+</div>
 
-}
-
-else if(interest==="Nocne atrakcje"){
-
-html+="🌙 Spacer nocny<br>";
-html+="📸 Zdjęcia";
+`;
 
 }
 
-else{
-
-html+="🏰 Zwiedzanie<br>";
-html+="🖼 Muzeum";
-
-}
-
-html+="</div>";
-
-}
-
-document.getElementById("result").innerHTML=html;
+document.getElementById("result")
+.innerHTML=html;
 
 }
 
