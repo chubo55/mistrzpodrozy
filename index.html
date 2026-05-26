@@ -6,6 +6,7 @@
 <title>Mistrz Podróży AI</title>
 
 <style>
+
 body{
 font-family:Arial,sans-serif;
 background:#eef2f7;
@@ -43,6 +44,12 @@ padding:15px;
 margin-top:15px;
 border-radius:10px;
 }
+
+.weather{
+font-weight:bold;
+margin:8px 0;
+}
+
 </style>
 </head>
 
@@ -52,15 +59,20 @@ border-radius:10px;
 
 <h1>🤖 Mój Plan AI</h1>
 
-<input id="place" placeholder="Dokąd jedziesz?">
+<input id="place"
+placeholder="Dokąd jedziesz?">
 
-<input id="days" type="number" placeholder="Ile dni?">
+<input id="days"
+type="number"
+placeholder="Ile dni?">
 
 <select id="interest">
+
 <option>Góry</option>
 <option>Zwiedzanie</option>
 <option>Jedzenie</option>
 <option>Nocne atrakcje</option>
+
 </select>
 
 <button id="btn">
@@ -70,6 +82,7 @@ Ułóż mój plan
 <div id="result"></div>
 
 </div>
+
 
 <script>
 
@@ -88,32 +101,26 @@ const plans={
 ["🏰 Zamek","🖼 Muzeum"],
 ["🏛 Rynek","☕ Kawiarnia"],
 ["📍 Atrakcje miasta","🍽 Restauracja"],
-["🎭 Lokalna kultura","📸 Zdjęcia"],
-["🌇 Stare miasto","🥘 Kolacja"],
-["🌙 Spacer wieczorny","🎵 Klimatyczne miejsce"]
+["🎭 Lokalna kultura","📸 Zdjęcia"]
 ],
 
 "Jedzenie":[
-["🥐 Śniadanie regionalne","☕ Kawiarnia"],
-["🍲 Obiad lokalny","🍰 Deser"],
-["🥘 Regionalna restauracja","🍷 Kolacja"],
-["🍔 Street food","📍 Spacer"],
-["☕ Kawiarnia","🍽 Obiad"],
-["🌙 Wieczorna restauracja","🍸 Klimatyczne miejsce"]
+["🍽 Regionalna restauracja","☕ Kawiarnia"],
+["🥘 Lokalny obiad","🍷 Kolacja"],
+["🍰 Desery","🚶 Spacer"]
 ],
 
 "Nocne atrakcje":[
 ["🌇 Zachód słońca","📸 Zdjęcia"],
 ["🌙 Spacer nocny","🍽 Kolacja"],
-["🎵 Muzyka","☕ Kawiarnia"],
-["🌃 Punkt widokowy","📷 Fotografie"],
-["🍸 Wieczorne miejsce","🚶 Spacer"],
-["🌠 Nocne niebo","🌙 Relaks"]
+["🌃 Punkt widokowy","📷 Fotografie"]
 ]
 
 };
 
-document.getElementById("btn")
+
+document
+.getElementById("btn")
 .onclick=function(){
 
 const place=
@@ -127,41 +134,25 @@ document.getElementById("days").value
 const interest=
 document.getElementById("interest").value;
 
-let html=`
-<h2>📍 ${place}</h2>
-<p>📅 ${days} dni</p>
-`;
-
-for(let i=1;i<=days;i++){
-
-let dayPlan=
-plans[interest][(i-1)%plans[interest].length];
-
 const weatherTypes=[
 "☀️ Słonecznie 24°C",
 "⛅ Zachmurzenie 21°C",
 "🌧 Deszcz 17°C"
 ];
 
-const weather=
-weatherTypes[
-Math.floor(
-Math.random()*weatherTypes.length
-)
-];
+let html=`
 
-if(weather.includes("Deszcz")){
+<h2>📍 ${place}</h2>
 
-dayPlan=[
-"🏰 Atrakcja pod dachem",
-"☕ Kawiarnia + regionalne jedzenie"
-];
+<p>📅 ${days} dni</p>
 
-}
-  const weatherTypes=[
-"☀️ Słonecznie 24°C",
-"⛅ Zachmurzenie 21°C",
-"🌧 Deszcz 17°C"
+`;
+
+for(let i=1;i<=days;i++){
+
+let dayPlan=
+plans[interest][
+(i-1)%plans[interest].length
 ];
 
 const weather=
@@ -175,7 +166,7 @@ if(weather.includes("Deszcz")){
 
 dayPlan=[
 "🏰 Atrakcja pod dachem",
-"☕ Kawiarnia + regionalne jedzenie"
+"☕ Regionalna restauracja"
 ];
 
 }
@@ -185,9 +176,10 @@ html+=`
 <div class="day">
 
 <h3>📅 Dzień ${i}</h3>
-<p>${weather}</p>
 
-<p>${weather}</p>
+<div class="weather">
+${weather}
+</div>
 
 <p>${dayPlan[0]}</p>
 
@@ -199,7 +191,8 @@ html+=`
 
 }
 
-document.getElementById("result")
+document
+.getElementById("result")
 .innerHTML=html;
 
 }
