@@ -123,7 +123,49 @@ let html=`
 
 `;
 
-route.stops.forEach(stop=>{
+route.stops.forEach((stop,index)=>{
+
+html += `
+
+<div class="day">
+
+<h4>
+
+${stop.icon}
+${stop.name}
+
+</h4>
+
+<p>⏱ ${stop.time}</p>
+
+<p>⭐ ${stop.rating}</p>
+
+<p>💰 ${stop.price}</p>
+
+<button
+onclick="showDetails(${index})">
+
+Szczegóły
+
+</button>
+
+<div
+id="details${index}"
+style="display:none;margin-top:10px;">
+
+<p>🚗 Parking: ${stop.parking}</p>
+
+<p>${stop.photo}</p>
+
+<p>📝 ${stop.description}</p>
+
+</div>
+
+</div>
+
+`;
+
+});
 
 html+=`
 
