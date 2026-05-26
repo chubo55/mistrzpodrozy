@@ -2,9 +2,9 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mistrz Podróży</title>
+<title>Mistrz Podróży AI</title>
 
 <style>
 
@@ -15,19 +15,23 @@ background:#eef2f7;
 }
 
 header{
-background:linear-gradient(90deg,#0b72ff,#00b7ff);
 padding:40px;
 text-align:center;
+background:linear-gradient(90deg,#0b72ff,#00b7ff);
 color:white;
 }
 
-.box{
+.container{
 width:85%;
 max-width:900px;
 margin:30px auto;
+}
+
+.card{
 background:white;
 padding:25px;
 border-radius:20px;
+margin-bottom:25px;
 box-shadow:0 5px 15px rgba(0,0,0,.1);
 }
 
@@ -37,6 +41,7 @@ padding:12px;
 margin-top:10px;
 border-radius:10px;
 border:1px solid #ddd;
+box-sizing:border-box;
 }
 
 button{
@@ -55,8 +60,15 @@ cursor:pointer;
 display:none;
 margin-top:20px;
 padding:20px;
-background:#f5f5f5;
 border-radius:15px;
+background:#f7f7f7;
+}
+
+.day{
+padding:10px;
+margin-top:10px;
+background:white;
+border-radius:10px;
 }
 
 </style>
@@ -72,15 +84,18 @@ border-radius:15px;
 
 </header>
 
+<div class="container">
 
-<div class="box">
+<div class="card">
 
 <h2>🤖 Mój Plan AI</h2>
 
-<input id="place"
+<input
+id="place"
 placeholder="Dokąd jedziesz?">
 
-<input id="days"
+<input
+id="days"
 placeholder="Ile dni?">
 
 <select id="transport">
@@ -105,8 +120,13 @@ Ułóż mój plan
 
 </button>
 
+<div
+class="result"
+id="result">
 
-<div class="result" id="result"></div>
+</div>
+
+</div>
 
 </div>
 
@@ -115,71 +135,70 @@ Ułóż mój plan
 
 function generatePlan(){
 
-let place=document
-.getElementById("place").value;
+let place=
+document.getElementById("place").value;
 
-let days=document
-.getElementById("days").value;
+let days=
+document.getElementById("days").value;
 
-let interest=document
-.getElementById("interest").value;
-
-let result=document
-.getElementById("result");
+let interest=
+document.getElementById("interest").value;
 
 let plan="";
 
-if(interest=="Góry"){
+if(interest==="Góry"){
 
 plan=`
 
-<h3>Dzień 1</h3>
+<div class="day">
+
+<h3>🏔 Dzień 1</h3>
 
 <p>08:30 Śniadanie</p>
-
 <p>10:00 Szlak górski</p>
-
 <p>13:00 Schronisko</p>
-
 <p>16:00 Punkt widokowy</p>
-
 <p>20:00 Zachód słońca</p>
 
+</div>
+
 `;
 
 }
 
-else if(interest=="Jedzenie"){
+else if(interest==="Jedzenie"){
 
 plan=`
 
-<h3>Dzień 1</h3>
+<div class="day">
+
+<h3>🍽 Dzień 1</h3>
 
 <p>09:00 Śniadanie regionalne</p>
-
-<p>12:00 Lokalna restauracja</p>
-
+<p>12:00 Restauracja lokalna</p>
 <p>15:00 Kawiarnia</p>
-
 <p>19:00 Kolacja regionalna</p>
+
+</div>
 
 `;
 
 }
 
-else if(interest=="Nocne atrakcje"){
+else if(interest==="Nocne atrakcje"){
 
 plan=`
 
-<h3>Dzień 1</h3>
+<div class="day">
+
+<h3>🌙 Dzień 1</h3>
 
 <p>10:00 Zwiedzanie</p>
-
 <p>18:00 Kolacja</p>
-
 <p>21:00 Punkt widokowy nocą</p>
-
 <p>23:00 Spacer po mieście</p>
+
+</div>
 
 `;
 
@@ -189,64 +208,32 @@ else{
 
 plan=`
 
-<h3>Dzień 1</h3>
+<div class="day">
 
-<p>09:00 Zwiedzanie atrakcji</p>
+<h3>🏰 Dzień 1</h3>
 
+<p>09:00 Zwiedzanie</p>
 <p>12:00 Muzeum</p>
-
 <p>15:00 Zamek</p>
+<p>20:00 Spacer wieczorny</p>
 
-<p>20:00 Wieczorny spacer</p>
+</div>
 
 `;
 
 }
 
+let result=
+document.getElementById("result");
+
 result.innerHTML=`
 
 <h2>📍 ${place}</h2>
+
+<p>📅 Długość pobytu:
+${days} dni</p>
 
 ${plan}
-
-<p>📅 Długość pobytu: ${days} dni</p>
-
-`;
-
-result.style.display="block";
-
-}
-
-let place=document
-.getElementById("place").value;
-
-let days=document
-.getElementById("days").value;
-
-let interest=document
-.getElementById("interest").value;
-
-let result=document
-.getElementById("result");
-
-
-result.innerHTML=`
-
-<h2>📍 ${place}</h2>
-
-<h3>Dzień 1</h3>
-
-<p>09:00 Śniadanie</p>
-
-<p>10:30 ${interest}</p>
-
-<p>13:00 Regionalny obiad</p>
-
-<p>16:00 Atrakcje</p>
-
-<p>20:00 Wieczorny spacer</p>
-
-<p>📅 Długość pobytu: ${days} dni</p>
 
 `;
 
