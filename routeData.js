@@ -14,9 +14,9 @@ rating:"4.8/5",
 price:"35 zł",
 parking:"Tak",
 description:"Jeden z największych zamków w Polsce",
-photo:"📸 Idealny na zdjęcia"
-map:"#",
-ticket:"#"
+photo:"📸 Idealny na zdjęcia",
+map:"https://www.ksiaz.walbrzych.pl",
+ticket:"https://www.ksiaz.walbrzych.pl"
 },
 
 {
@@ -27,8 +27,8 @@ rating:"4.7/5",
 price:"25–45 zł",
 parking:"Tak",
 description:"Regionalne jedzenie i duże porcje",
-photo:"📸 Klimatyczne wnętrze"
-map:"#",
+photo:"📸 Klimatyczne wnętrze",
+map:"https://maps.google.com",
 ticket:"#"
 },
 
@@ -40,8 +40,8 @@ rating:"4.9/5",
 price:"Darmowe",
 parking:"Tak",
 description:"Widoki na góry i lasy",
-photo:"📸 Zachody słońca"
-map:"#",
+photo:"📸 Zachody słońca",
+map:"https://maps.google.com",
 ticket:"#"
 }
 
