@@ -152,7 +152,7 @@ return false;
 
 return true;
 
-});
+}
 
 if(filteredStops.length===0){
 
