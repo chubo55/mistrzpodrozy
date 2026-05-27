@@ -16,8 +16,12 @@ parking:"Tak",
 description:"Jeden z największych zamków w Polsce",
 photo:"📸 Idealny na zdjęcia",
 map:"https://www.ksiaz.walbrzych.pl",
-ticket:"https://www.ksiaz.walbrzych.pl"
-},
+ticket:"https://www.ksiaz.walbrzych.pl",
+
+paid:true,
+longStop:true,
+city:true
+}
 
 {
 icon:"🍽",
@@ -30,6 +34,10 @@ description:"Regionalne jedzenie i duże porcje",
 photo:"📸 Klimatyczne wnętrze",
 map:"https://maps.google.com",
 ticket:"#"
+
+paid:false,
+longStop:false,
+city:true
 },
 
 {
@@ -43,6 +51,10 @@ description:"Widoki na góry i lasy",
 photo:"📸 Zachody słońca",
 map:"https://maps.google.com",
 ticket:"#"
+  
+paid:false,
+longStop:false,
+city:true
 }
 
 ]
