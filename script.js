@@ -322,10 +322,11 @@ html+=`
 
 <div class="route-map">
 
-<div class="route-step">
+<div class="route-step start">
 
 <div class="route-title">
-📍 ${from}
+
+<div class="route-step end">
 </div>
 
 </div>
