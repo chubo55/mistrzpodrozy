@@ -96,6 +96,14 @@ document.getElementById("views")?.checked;
 const wantsFood=
 document.getElementById("food")?.checked;
 
+const avoidPaid=
+document.getElementById("expensive")?.checked;
+
+const avoidLong=
+document.getElementById("longStops")?.checked;
+
+const avoidCities=
+document.getElementById("cities")?.checked;  
 
 let filteredStops=
 route.stops.filter(stop=>{
