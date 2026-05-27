@@ -79,6 +79,53 @@ routes[key];
 
 if(!route){
 
+html+=`<div class="route-map">`;
+
+html+=`
+
+<div class="route-step">
+
+<div class="route-title">
+📍 ${from}
+</div>
+
+</div>
+
+`;
+
+filteredStops.forEach(stop=>{
+
+html+=`
+
+<div class="route-step">
+
+<div class="route-title">
+
+${stop.icon}
+${stop.name}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+html+=`
+
+<div class="route-step">
+
+<div class="route-title">
+📍 ${to}
+</div>
+
+</div>
+
+`;
+
+html+=`</div>`;  
+  
 document
 .getElementById("routeResult")
 .innerHTML=
