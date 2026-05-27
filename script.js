@@ -325,8 +325,60 @@ html+=`
 <div class="route-step start">
 
 <div class="route-title">
+📍 ${from}
+</div>
+
+</div>
+
+`;
+
+filteredStops.forEach(stop=>{
+
+let stepClass="";
+
+if(stop.icon.includes("🏰")){
+stepClass="castle";
+}
+
+else if(stop.icon.includes("🍽")){
+stepClass="food";
+}
+
+else if(stop.icon.includes("🌲")){
+stepClass="view";
+}
+
+html+=`
+
+<div class="route-step ${stepClass}">
+
+<div class="route-title">
+
+${stop.icon}
+${stop.name}
+
+</div>
+
+<div class="route-time">
+
+⏱ ${stop.time}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+html+=`
 
 <div class="route-step end">
+
+<div class="route-title">
+📍 ${to}
+</div>
+
 </div>
 
 </div>
