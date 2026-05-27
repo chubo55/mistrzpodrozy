@@ -1,26 +1,46 @@
 document
 .getElementById("btn")
-.addEventListener("click",generatePlan);
+.addEventListener(
+"click",
+generatePlan
+);
 
 function generatePlan(){
 
 const place=
-document.getElementById("place").value;
+document
+.getElementById("place")
+.value;
 
 const days=
 parseInt(
-document.getElementById("days").value
+document
+.getElementById("days")
+.value
 )||1;
 
 const interest=
-document.getElementById("interest").value;
+document
+.getElementById("interest")
+.value;
 
 let html=`
-<h2>📍 ${place}</h2>
-<p>📅 ${days} dni</p>
+
+<h2>
+📍 ${place}
+</h2>
+
+<p>
+📅 ${days} dni
+</p>
+
 `;
 
-for(let i=1;i<=days;i++){
+for(
+let i=1;
+i<=days;
+i++
+){
 
 let dayPlan=
 plans[interest][
@@ -31,11 +51,17 @@ html+=`
 
 <div class="day">
 
-<h3>Dzień ${i}</h3>
+<h3>
+Dzień ${i}
+</h3>
 
-<p>${dayPlan[0]}</p>
+<p>
+${dayPlan[0]}
+</p>
 
-<p>${dayPlan[1]}</p>
+<p>
+${dayPlan[1]}
+</p>
 
 </div>
 
@@ -59,14 +85,18 @@ generateRoute
 );
 
 
+
 function generateRoute(){
 
 const from=
-document.getElementById("from")
-.value.trim();
+document
+.getElementById("from")
+.value
+.trim();
 
 const to=
-document.getElementById("to")
+document
+.getElementById("to")
 .value
 .trim()
 .replace("-", " ");
@@ -79,128 +109,51 @@ routes[key];
 
 if(!route){
 
-html+=`<div class="route-map">`;
-
-html+=`
-
-<div class="route-step">
-
-<div class="route-title">
-📍 ${from}
-</div>
-
-</div>
-
-`;
-
-filteredStops.forEach(stop=>{
-
-html+=`
-
-<div class="route-step">
-
-<div class="route-title">
-
-${stop.icon}
-${stop.name}
-
-</div>
-
-</div>
-
-`;
-
-});
-
-html+=`
-
-<div class="route-step">
-
-<div class="route-title">
-📍 ${to}
-</div>
-
-</div>
-
-`;
-
-html+=`</div>`;  
-  
-html+=`<div class="route-map">`;
-
-html+=`
-
-<div class="route-step">
-
-<div class="route-title">
-📍 ${from}
-</div>
-
-</div>
-
-`;
-
-filteredStops.forEach(stop=>{
-
-html+=`
-
-<div class="route-step">
-
-<div class="route-title">
-
-${stop.icon}
-${stop.name}
-
-</div>
-
-</div>
-
-`;
-
-});
-
-html+=`
-
-<div class="route-step">
-
-<div class="route-title">
-📍 ${to}
-</div>
-
-</div>
-
-`;
-
-html+=`</div>`;
-
 document
 .getElementById(
 "routeResult"
 )
-.innerHTML=html;
+.innerHTML=
 "❌ Brak danych";
 
 return;
 
 }
 
+
+
 const wantsCastles=
-document.getElementById("castles")?.checked;
+document
+.getElementById("castles")
+?.checked;
 
 const wantsViews=
-document.getElementById("views")?.checked;
+document
+.getElementById("views")
+?.checked;
 
 const wantsFood=
-document.getElementById("food")?.checked;
+document
+.getElementById("food")
+?.checked;
+
+
 
 const avoidPaid=
-document.getElementById("expensive")?.checked;
+document
+.getElementById("expensive")
+?.checked;
 
 const avoidLong=
-document.getElementById("longStops")?.checked;
+document
+.getElementById("longStops")
+?.checked;
 
 const avoidCities=
-document.getElementById("cities")?.checked;
+document
+.getElementById("cities")
+?.checked;
+
 
 
 let filteredStops=
@@ -222,7 +175,7 @@ selected.push("🍽");
 
 if(selected.length>0){
 
-let match=
+const match=
 selected.some(icon=>
 stop.icon.includes(icon)
 );
@@ -232,6 +185,8 @@ return false;
 }
 
 }
+
+
 
 if(
 avoidPaid &&
@@ -258,18 +213,24 @@ return true;
 
 });
 
-if(filteredStops.length===0){
 
+
+if(
+filteredStops.length===0
+){
 filteredStops=
 route.stops;
-
 }
+
+
 
 let html=`
 
 <h3>
 
-📍 ${from} → ${to}
+📍 ${from}
+→
+${to}
 
 </h3>
 
@@ -281,60 +242,14 @@ let html=`
 
 `;
 
-filteredStops.forEach((stop,index)=>{
+
+
+filteredStops.forEach(
+(stop,index)=>{
 
 html+=`
 
 <div class="day">
-
-});
-
-html+=`
-
-<div class="route-map">
-
-<div class="route-step">
-
-<div class="route-title">
-📍 ${from}
-</div>
-
-</div>
-
-`;
-
-filteredStops.forEach(stop=>{
-
-html+=`
-
-<div class="route-step">
-
-<div class="route-title">
-
-${stop.icon}
-${stop.name}
-
-</div>
-
-</div>
-
-`;
-
-});
-
-html+=`
-
-<div class="route-step">
-
-<div class="route-title">
-📍 ${to}
-</div>
-
-</div>
-
-</div>
-
-`;
 
 <h4>
 
@@ -343,9 +258,13 @@ ${stop.name}
 
 </h4>
 
-<p>⭐ ${stop.rating}</p>
+<p>
+⭐ ${stop.rating}
+</p>
 
-<p>💰 ${stop.price}</p>
+<p>
+💰 ${stop.price}
+</p>
 
 <button
 onclick="showDetails(${index})">
@@ -365,11 +284,17 @@ onclick="addFavorite('${stop.name}')">
 id="details${index}"
 style="display:none;">
 
-<p>🚗 ${stop.parking}</p>
+<p>
+🚗 ${stop.parking}
+</p>
 
-<p>${stop.photo}</p>
+<p>
+${stop.photo}
+</p>
 
-<p>${stop.description}</p>
+<p>
+${stop.description}
+</p>
 
 <p>
 
@@ -391,6 +316,61 @@ target="_blank">
 
 });
 
+
+
+html+=`
+
+<div class="route-map">
+
+<div class="route-step">
+
+<div class="route-title">
+📍 ${from}
+</div>
+
+</div>
+
+`;
+
+
+
+filteredStops.forEach(stop=>{
+
+html+=`
+
+<div class="route-step">
+
+<div class="route-title">
+
+${stop.icon}
+${stop.name}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+
+html+=`
+
+<div class="route-step">
+
+<div class="route-title">
+📍 ${to}
+</div>
+
+</div>
+
+</div>
+
+`;
+
+
+
 document
 .getElementById(
 "routeResult"
@@ -398,6 +378,8 @@ document
 .innerHTML=html;
 
 }
+
+
 
 
 
@@ -417,13 +399,18 @@ box.style.display==="none"
 
 
 
+
+
 function addFavorite(place){
 
 let favorites=
 JSON.parse(
 localStorage.getItem(
-"favorites")
+"favorites"
+)
 )||[];
+
+
 
 if(
 !favorites.includes(place)
@@ -448,12 +435,16 @@ alert(
 
 
 
+
+
 document
 .getElementById("offerBtn")
-.addEventListener(
+?.addEventListener(
 "click",
 findOffer
 );
+
+
 
 
 
@@ -471,16 +462,27 @@ document
 .value
 )||0;
 
+
+
 const filtered=
 offers.filter(offer=>
+
 offer.place===place &&
+
 offer.price<=budget
+
 );
 
-if(filtered.length===0){
+
+
+if(
+filtered.length===0
+){
 
 document
-.getElementById("offerResult")
+.getElementById(
+"offerResult"
+)
 .innerHTML=
 "❌ Brak ofert";
 
@@ -488,15 +490,24 @@ return;
 
 }
 
-filtered.sort((a,b)=>
+
+
+filtered.sort(
+(a,b)=>
 b.rating-a.rating
 );
+
+
 
 const best=
 filtered[0];
 
+
+
 document
-.getElementById("offerResult")
+.getElementById(
+"offerResult"
+)
 .innerHTML=`
 
 <div class="day">
@@ -507,11 +518,17 @@ document
 
 </h3>
 
-<p>💰 ${best.price} zł</p>
+<p>
+💰 ${best.price} zł
+</p>
 
-<p>⭐ ${best.rating}</p>
+<p>
+⭐ ${best.rating}
+</p>
 
-<p>📍 ${best.distance}</p>
+<p>
+📍 ${best.distance}
+</p>
 
 <p>
 
