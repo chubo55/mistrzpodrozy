@@ -74,6 +74,42 @@ from+"-"+to;
 
 const route=
 routes[key];
+const wantsCastles=
+document.getElementById("castles").checked;
+
+const wantsViews=
+document.getElementById("views").checked;
+
+const wantsFood=
+document.getElementById("food").checked;
+
+let filteredStops=
+filteredStops.forEach(
+
+if(
+wantsCastles &&
+!stop.icon.includes("🏰")
+){
+return false;
+}
+
+if(
+wantsViews &&
+!stop.icon.includes("🌲")
+){
+return false;
+}
+
+if(
+wantsFood &&
+!stop.icon.includes("🍽")
+){
+return false;
+}
+
+return true;
+
+});
 
 if(!route){
 
