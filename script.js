@@ -355,6 +355,8 @@ html+=`
 
 <div class="route-step ${stepClass}">
 
+</div>
+
 <div class="route-title">
 
 ${stop.icon}
