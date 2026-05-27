@@ -51,3 +51,34 @@ font-size:18px;
 width:auto;
 margin-right:10px;
 }
+
+.route-map{
+margin-top:20px;
+padding-left:20px;
+border-left:4px solid #0b72ff;
+}
+
+.route-step{
+position:relative;
+padding:15px 20px;
+margin-bottom:15px;
+background:white;
+border-radius:15px;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.route-step::before{
+content:"";
+position:absolute;
+left:-31px;
+top:22px;
+width:16px;
+height:16px;
+background:#0b72ff;
+border-radius:50%;
+}
+
+.route-title{
+font-weight:bold;
+font-size:18px;
+}
