@@ -105,25 +105,42 @@ document.getElementById("cities")?.checked;
 let filteredStops=
 route.stops.filter(stop=>{
 
+const selected=[];
+
 if(
-wantsCastles &&
-!stop.icon.includes("🏰")
+wantsCastles
 ){
-return false;
+selected.push("🏰");
 }
 
 if(
-wantsViews &&
-!stop.icon.includes("🌲")
+wantsViews
 ){
-return false;
+selected.push("🌲");
 }
 
 if(
-wantsFood &&
-!stop.icon.includes("🍽")
+wantsFood
 ){
+selected.push("🍽");
+}
+
+if(
+selected.length>0
+){
+
+let match=
+selected.some(icon=>
+stop.icon.includes(icon)
+);
+
+if(!match){
+
 return false;
+
+}
+
+}
 }
 
 if(
