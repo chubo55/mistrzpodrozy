@@ -48,6 +48,7 @@ document
 }
 
 
+
 document
 .getElementById("routeBtn")
 .addEventListener(
@@ -75,17 +76,29 @@ from+"-"+to;
 const route=
 routes[key];
 
+if(!route){
+
+document
+.getElementById("routeResult")
+.innerHTML=
+"❌ Brak danych";
+
+return;
+
+}
+
 const wantsCastles=
-document.getElementById("castles").checked;
+document.getElementById("castles")?.checked;
 
 const wantsViews=
-document.getElementById("views").checked;
+document.getElementById("views")?.checked;
 
 const wantsFood=
-document.getElementById("food").checked;
+document.getElementById("food")?.checked;
+
 
 let filteredStops=
-filteredStops.forEach(
+route.stops.filter(stop=>{
 
 if(
 wantsCastles &&
@@ -112,14 +125,9 @@ return true;
 
 });
 
-if(!route){
+if(filteredStops.length===0){
 
-document
-.getElementById("routeResult")
-.innerHTML=
-"❌ Brak danych";
-
-return;
+filteredStops=route.stops;
 
 }
 
@@ -139,7 +147,7 @@ let html=`
 
 `;
 
-route.stops.forEach((stop,index)=>{
+filteredStops.forEach((stop,index)=>{
 
 html+=`
 
@@ -166,11 +174,7 @@ Szczegóły
 <button
 onclick="addFavorite('${stop.name}')">
 
-❤️ Dodaj do ulubionych
-
-</button>
-
-Szczegóły
+❤️ Ulubione
 
 </button>
 
@@ -191,18 +195,6 @@ href="${stop.map}"
 target="_blank">
 
 🗺 Otwórz mapę
-
-</a>
-
-</p>
-
-<p>
-
-<a
-href="${stop.ticket}"
-target="_blank">
-
-🎟 Kup bilet
 
 </a>
 
@@ -237,6 +229,7 @@ box.style.display==="none"
 : "none";
 
 }
+
 function addFavorite(place){
 
 let favorites=
@@ -244,7 +237,7 @@ JSON.parse(
 localStorage.getItem(
 "favorites"
 )
-) || [];
+)||[];
 
 if(
 !favorites.includes(place)
@@ -255,19 +248,13 @@ favorites.push(place);
 localStorage.setItem(
 "favorites",
 JSON.stringify(
-favorites
-)
+favorites)
 );
 
 alert(
-"❤️ Dodano: " + place
+"❤️ Dodano: "+place
 );
 
 }
-else{
-
-alert(
-"To miejsce już jest zapisane"
-);
 
 }
