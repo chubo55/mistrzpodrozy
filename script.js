@@ -48,7 +48,6 @@ document
 }
 
 
-
 document
 .getElementById("routeBtn")
 .addEventListener(
@@ -56,19 +55,16 @@ document
 generateRoute
 );
 
+
 function generateRoute(){
 
 const from=
-document
-.getElementById("from")
-.value
-.trim();
+document.getElementById("from")
+.value.trim();
 
 const to=
-document
-.getElementById("to")
-.value
-.trim();
+document.getElementById("to")
+.value.trim();
 
 const key=
 from+"-"+to;
@@ -103,7 +99,8 @@ const avoidLong=
 document.getElementById("longStops")?.checked;
 
 const avoidCities=
-document.getElementById("cities")?.checked;  
+document.getElementById("cities")?.checked;
+
 
 let filteredStops=
 route.stops.filter(stop=>{
@@ -128,7 +125,7 @@ wantsFood &&
 ){
 return false;
 }
-  
+
 if(
 avoidPaid &&
 stop.paid
@@ -152,11 +149,12 @@ return false;
 
 return true;
 
-}
+});
 
 if(filteredStops.length===0){
 
-filteredStops=route.stops;
+filteredStops=
+route.stops;
 
 }
 
@@ -245,6 +243,7 @@ document
 
 }
 
+
 function showDetails(index){
 
 const box=
@@ -264,8 +263,7 @@ function addFavorite(place){
 let favorites=
 JSON.parse(
 localStorage.getItem(
-"favorites"
-)
+"favorites")
 )||[];
 
 if(
@@ -277,7 +275,8 @@ favorites.push(place);
 localStorage.setItem(
 "favorites",
 JSON.stringify(
-favorites)
+favorites
+)
 );
 
 alert(
