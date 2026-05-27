@@ -287,6 +287,55 @@ html+=`
 
 <div class="day">
 
+});
+
+html+=`
+
+<div class="route-map">
+
+<div class="route-step">
+
+<div class="route-title">
+📍 ${from}
+</div>
+
+</div>
+
+`;
+
+filteredStops.forEach(stop=>{
+
+html+=`
+
+<div class="route-step">
+
+<div class="route-title">
+
+${stop.icon}
+${stop.name}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+html+=`
+
+<div class="route-step">
+
+<div class="route-title">
+📍 ${to}
+</div>
+
+</div>
+
+</div>
+
+`;
+
 <h4>
 
 ${stop.icon}
