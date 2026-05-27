@@ -355,8 +355,6 @@ html+=`
 
 <div class="route-step ${stepClass}">
 
-</div>
-
 <div class="route-title">
 
 ${stop.icon}
@@ -367,6 +365,8 @@ ${stop.name}
 <div class="route-time">
 
 ⏱ ${stop.time}
+
+</div>
 
 </div>
 
