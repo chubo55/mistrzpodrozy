@@ -21,7 +21,7 @@ ticket:"https://www.ksiaz.walbrzych.pl",
 paid:true,
 longStop:true,
 city:true
-}
+},
 
 {
 icon:"🍽",
@@ -33,7 +33,7 @@ parking:"Tak",
 description:"Regionalne jedzenie i duże porcje",
 photo:"📸 Klimatyczne wnętrze",
 map:"https://maps.google.com",
-ticket:"#"
+ticket:"#",
 
 paid:false,
 longStop:false,
@@ -50,11 +50,11 @@ parking:"Tak",
 description:"Widoki na góry i lasy",
 photo:"📸 Zachody słońca",
 map:"https://maps.google.com",
-ticket:"#"
-  
+ticket:"#",
+
 paid:false,
 longStop:false,
-city:true
+city:false
 }
 
 ]
