@@ -301,4 +301,77 @@ alert(
 
 }
 
+}document
+.getElementById("offerBtn")
+.addEventListener(
+"click",
+findOffer
+);
+
+function findOffer(){
+
+const place=
+document
+.getElementById("offerPlace")
+.value;
+
+const budget=
+parseInt(
+document
+.getElementById("budget")
+.value
+)||0;
+
+const filtered=
+offers.filter(offer=>
+offer.place===place &&
+offer.price<=budget
+);
+
+if(filtered.length===0){
+
+document
+.getElementById("offerResult")
+.innerHTML=
+"❌ Brak ofert";
+
+return;
+
+}
+
+filtered.sort((a,b)=>
+b.rating-a.rating
+);
+
+const best=
+filtered[0];
+
+document
+.getElementById("offerResult")
+.innerHTML=`
+
+<div class="day">
+
+<h3>
+
+🏆 ${best.name}
+
+</h3>
+
+<p>💰 ${best.price} zł</p>
+
+<p>⭐ ${best.rating}</p>
+
+<p>📍 ${best.distance}</p>
+
+<p>
+
+🤖 Najlepszy stosunek jakości do ceny
+
+</p>
+
+</div>
+
+`;
+
 }
