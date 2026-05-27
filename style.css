@@ -53,32 +53,67 @@ margin-right:10px;
 }
 
 .route-map{
-margin-top:20px;
-padding-left:20px;
+margin-top:30px;
+padding-left:25px;
 border-left:4px solid #0b72ff;
+position:relative;
 }
 
 .route-step{
 position:relative;
-padding:15px 20px;
-margin-bottom:15px;
+padding:18px;
+margin-bottom:20px;
 background:white;
-border-radius:15px;
-box-shadow:0 2px 10px rgba(0,0,0,.08);
+border-radius:18px;
+box-shadow:0 4px 14px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.route-step:hover{
+transform:translateY(-3px);
+box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
 
 .route-step::before{
 content:"";
 position:absolute;
-left:-31px;
-top:22px;
-width:16px;
-height:16px;
+left:-36px;
+top:26px;
+width:18px;
+height:18px;
 background:#0b72ff;
 border-radius:50%;
+border:4px solid white;
 }
 
 .route-title{
-font-weight:bold;
 font-size:18px;
+font-weight:bold;
+margin-bottom:6px;
+}
+
+.route-time{
+font-size:14px;
+color:#666;
+margin-top:8px;
+}
+
+.castle{
+border-left:6px solid #9b59b6;
+}
+
+.food{
+border-left:6px solid #ff9800;
+}
+
+.view{
+border-left:6px solid #4caf50;
+}
+
+.start{
+border-left:6px solid #0b72ff;
+}
+
+.end{
+border-left:6px solid #ff4d6d;
 }
