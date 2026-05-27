@@ -128,7 +128,27 @@ wantsFood &&
 ){
 return false;
 }
+  
+if(
+avoidPaid &&
+stop.paid
+){
+return false;
+}
 
+if(
+avoidLong &&
+stop.longStop
+){
+return false;
+}
+
+if(
+avoidCities &&
+stop.city
+){
+return false;
+}
 return true;
 
 });
