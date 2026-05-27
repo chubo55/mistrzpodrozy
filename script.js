@@ -74,6 +74,7 @@ from+"-"+to;
 
 const route=
 routes[key];
+
 const wantsCastles=
 document.getElementById("castles").checked;
 
