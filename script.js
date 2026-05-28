@@ -327,6 +327,7 @@ html+=`
 
 <div class="route-title">
 🏁 ${to}
+
 </div>
 
 </div>
@@ -384,6 +385,7 @@ html+=`
 
 <div class="route-title">
 🏁 ${to}
+
 </div>
 
 </div>
