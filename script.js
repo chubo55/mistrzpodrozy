@@ -326,7 +326,7 @@ html+=`
 <div class="route-step end">
 
 <div class="route-title">
-📍 ${to}
+🏁 ${to}
 </div>
 
 </div>
