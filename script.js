@@ -318,17 +318,6 @@ target="_blank">
 
 
 
-html+=`
-
-<div class="route-map">
-
-📍 ${from}
-</div>
-
-</div>
-
-`;
-
 filteredStops.forEach(stop=>{
 
 let stepClass="";
