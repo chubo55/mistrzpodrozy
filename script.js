@@ -318,7 +318,6 @@ target="_blank">
 
 
 
-
 html+=`
 
 <div class="route-step end">
