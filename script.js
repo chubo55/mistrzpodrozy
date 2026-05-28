@@ -228,7 +228,7 @@ let html=`
 
 <h3>
 
-🏁 ${from}
+📍 ${from}
 →
 ${to}
 
@@ -550,7 +550,7 @@ document
 </p>
 
 <p>
-🏁 ${best.distance}
+📍 ${best.distance}
 </p>
 
 <p>
