@@ -27,7 +27,7 @@ document
 let html=`
 
 <h2>
-📍 ${place}
+🏁 ${place}
 </h2>
 
 <p>
@@ -228,7 +228,7 @@ let html=`
 
 <h3>
 
-📍 ${from}
+🏁 ${from}
 →
 ${to}
 
@@ -383,7 +383,7 @@ html+=`
 <div class="route-step">
 
 <div class="route-title">
-📍 ${to}
+🏁 ${to}
 </div>
 
 </div>
@@ -550,7 +550,7 @@ document
 </p>
 
 <p>
-📍 ${best.distance}
+🏁 ${best.distance}
 </p>
 
 <p>
