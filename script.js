@@ -591,9 +591,7 @@ localStorage.getItem(
 )
 )||[];
 
-alert(
-JSON.stringify(favorites)
-);
+
 if(favorites.length===0){
 
 document
