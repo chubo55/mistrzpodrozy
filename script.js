@@ -587,8 +587,6 @@ alert("Klik działa");
 
 function showFavorites(){
 
-alert("Działa");
-
 let favorites=
 JSON.parse(
 localStorage.getItem(
@@ -596,6 +594,9 @@ localStorage.getItem(
 )
 )||[];
 
+alert(
+JSON.stringify(favorites)
+);
 if(favorites.length===0){
 
 document
