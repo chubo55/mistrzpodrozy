@@ -578,7 +578,11 @@ document
 .getElementById("showFavoritesBtn")
 .addEventListener(
 "click",
-showFavorites
+function(){
+
+alert("Klik działa");
+
+}
 );
 
 function showFavorites(){
