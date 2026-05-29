@@ -583,6 +583,8 @@ showFavorites
 
 function showFavorites(){
 
+alert("Działa");
+
 let favorites=
 JSON.parse(
 localStorage.getItem(
