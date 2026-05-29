@@ -118,13 +118,6 @@ border-left:6px solid #0b72ff;
 border-left:6px solid #ff4d6d;
 }
 
-.small-btn{
-width:auto;
-display:inline-block;
-padding:10px 20px;
-margin-top:10px;
-}
-
 .favorites-header{
 display:flex;
 align-items:center;
