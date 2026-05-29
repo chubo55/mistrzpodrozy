@@ -11,7 +11,6 @@ const place=
 document
 .getElementById("place")
 .value
-|| "Nie podano miejsca";
 
 const days=
 parseInt(
