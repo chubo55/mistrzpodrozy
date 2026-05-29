@@ -573,3 +573,56 @@ document
 `;
 
 }
+
+document
+.getElementById("showFavoritesBtn")
+.addEventListener(
+"click",
+showFavorites
+);
+
+function showFavorites(){
+
+let favorites=
+JSON.parse(
+localStorage.getItem(
+"favorites"
+)
+)||[];
+
+if(favorites.length===0){
+
+document
+.getElementById(
+"favoritesResult"
+)
+.innerHTML=
+"❌ Brak ulubionych miejsc";
+
+return;
+
+}
+
+let html="";
+
+favorites.forEach(place=>{
+
+html+=`
+
+<div class="day">
+
+❤️ ${place}
+
+</div>
+
+`;
+
+});
+
+document
+.getElementById(
+"favoritesResult"
+)
+.innerHTML=html;
+
+}
