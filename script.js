@@ -24,6 +24,11 @@ document
 .getElementById("interest")
 .value;
 
+const transport=
+document
+.getElementById("transport")
+.value;
+  
 let html=`
 
 <h2>
