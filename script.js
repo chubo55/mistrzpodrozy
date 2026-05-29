@@ -40,7 +40,7 @@ let html=`
 </p>
 
 <p>
-🚲 Transport: ${transport}
+🚗🚆🚲 Transport: ${transport}
 </p>
 
 `;
