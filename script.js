@@ -39,6 +39,10 @@ let html=`
 📅 ${days} dni
 </p>
 
+<p>
+${transport}
+</p>
+
 `;
 
 for(
