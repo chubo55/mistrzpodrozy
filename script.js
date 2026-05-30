@@ -253,10 +253,6 @@ ${to}
 `;
 
 
-
-filteredStops.forEach(
-(stop,index)=>{
-
 html+=`
 
 <div class="day">
