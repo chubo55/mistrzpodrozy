@@ -1,35 +1,35 @@
-document
-.getElementById("btn")
-.addEventListener(
+document.getElementById("btn").addEventListener(
 "click",
 generatePlan
+);
+
+document.getElementById("routeBtn").addEventListener(
+"click",
+generateRoute
+);
+
+document.getElementById("showFavoritesBtn").addEventListener(
+"click",
+showFavorites
 );
 
 function generatePlan(){
 
 const place=
-document
-.getElementById("place")
-.value
+document.getElementById("place").value
 || "Nie podano miejsca";
 
 const days=
 parseInt(
-document
-.getElementById("days")
-.value
+document.getElementById("days").value
 )||1;
 
 const interest=
-document
-.getElementById("interest")
-.value;
+document.getElementById("interest").value;
 
 const transport=
-document
-.getElementById("transport")
-.value;
-  
+document.getElementById("transport").value;
+
 let html=`
 
 <h2>
@@ -41,16 +41,12 @@ let html=`
 </p>
 
 <p>
-🚗🚆🚲 Transport: ${transport}
+🚗🚆🚲✈️ Transport: ${transport}
 </p>
 
 `;
 
-for(
-let i=1;
-i<=days;
-i++
-){
+for(let i=1;i<=days;i++){
 
 let dayPlan=
 plans[interest][
@@ -65,13 +61,9 @@ html+=`
 Dzień ${i}
 </h3>
 
-<p>
-${dayPlan[0]}
-</p>
+<p>${dayPlan[0]}</p>
 
-<p>
-${dayPlan[1]}
-</p>
+<p>${dayPlan[1]}</p>
 
 </div>
 
@@ -79,37 +71,17 @@ ${dayPlan[1]}
 
 }
 
-document
-.getElementById("result")
-.innerHTML=html;
+document.getElementById("result").innerHTML=html;
 
 }
-
-
-
-document
-.getElementById("routeBtn")
-.addEventListener(
-"click",
-generateRoute
-);
-
-
 
 function generateRoute(){
 
 const from=
-document
-.getElementById("from")
-.value
-.trim();
+document.getElementById("from").value.trim();
 
 const to=
-document
-.getElementById("to")
-.value
-.trim()
-.replace("-", " ");
+document.getElementById("to").value.trim();
 
 const key=
 from+"-"+to;
@@ -119,72 +91,56 @@ routes[key];
 
 if(!route){
 
-document
-.getElementById("routeResult")
+document.getElementById("routeResult")
 .innerHTML=
-"❌ Brak danych";
+"❌ Brak danych dla tej trasy";
 
 return;
 
 }
 
-const wantsCastles=
-document.getElementById("castles")?.checked;
-
-const wantsViews=
-document.getElementById("views")?.checked;
-
-const wantsFood=
-document.getElementById("food")?.checked;
-
-const avoidPaid=
-document.getElementById("expensive")?.checked;
-
-const avoidLong=
-document.getElementById("longStops")?.checked;
-
-const avoidCities=
-document.getElementById("cities")?.checked;
-
 let filteredStops=
 route.stops.filter(stop=>{
 
-const selected=[];
-
-if(wantsCastles){
-selected.push("🏰");
-}
-
-if(wantsViews){
-selected.push("🌲");
-}
-
-if(wantsFood){
-selected.push("🍽");
-}
-
-if(selected.length>0){
-
-const match=
-selected.some(icon=>
-stop.icon.includes(icon)
-);
-
-if(!match){
+if(
+document.getElementById("castles").checked &&
+!stop.icon.includes("🏰")
+){
 return false;
 }
 
-}
-
-if(avoidPaid && stop.paid){
+if(
+document.getElementById("views").checked &&
+!stop.icon.includes("🌲")
+){
 return false;
 }
 
-if(avoidLong && stop.longStop){
+if(
+document.getElementById("food").checked &&
+!stop.icon.includes("🍽")
+){
 return false;
 }
 
-if(avoidCities && stop.city){
+if(
+document.getElementById("expensive").checked &&
+stop.paid
+){
+return false;
+}
+
+if(
+document.getElementById("longStops").checked &&
+stop.longStop
+){
+return false;
+}
+
+if(
+document.getElementById("cities").checked &&
+stop.city
+){
 return false;
 }
 
@@ -222,13 +178,13 @@ ${stop.icon} ${stop.name}
 
 <p>💰 ${stop.price}</p>
 
-<button
-onclick="showDetails(${index})">
-Szczegóły </button>
+<button onclick="showDetails(${index})">
+Szczegóły
+</button>
 
-<button
-onclick="addFavorite('${stop.name}')">
-❤️ Ulubione </button>
+<button onclick="addFavorite('${stop.name}')">
+❤️ Ulubione
+</button>
 
 <div
 id="details${index}"
@@ -241,11 +197,15 @@ style="display:none;">
 <p>${stop.description}</p>
 
 <p>
+
 <a
 href="${stop.map}"
 target="_blank">
+
 🗺 Otwórz mapę
+
 </a>
+
 </p>
 
 </div>
@@ -277,31 +237,25 @@ let stepClass="";
 if(stop.icon.includes("🏰")){
 stepClass="castle";
 }
-else if(stop.icon.includes("🍽")){
+
+if(stop.icon.includes("🍽")){
 stepClass="food";
 }
-else if(stop.icon.includes("🌲")){
+
+if(stop.icon.includes("🌲")){
 stepClass="view";
 }
 
-
-
 html+=`
 
-<div class="route-step end">
+<div class="route-step ${stepClass}">
 
 <div class="route-title">
-🏁 ${to}
-
-${stop.icon}
-${stop.name}
-
+${stop.icon} ${stop.name}
 </div>
 
 <div class="route-time">
-
 ⏱ ${stop.time}
-
 </div>
 
 </div>
@@ -310,15 +264,12 @@ ${stop.name}
 
 });
 
-
-
 html+=`
 
-<div class="route-step">
+<div class="route-step end">
 
 <div class="route-title">
 🏁 ${to}
-
 </div>
 
 </div>
@@ -327,19 +278,10 @@ html+=`
 
 `;
 
-
-
-document
-.getElementById(
-"routeResult"
-)
+document.getElementById("routeResult")
 .innerHTML=html;
 
 }
-
-
-
-
 
 function showDetails(index){
 
@@ -355,32 +297,20 @@ box.style.display==="none"
 
 }
 
-
-
-
-
 function addFavorite(place){
 
 let favorites=
 JSON.parse(
-localStorage.getItem(
-"favorites"
-)
+localStorage.getItem("favorites")
 )||[];
 
-
-
-if(
-!favorites.includes(place)
-){
+if(!favorites.includes(place)){
 
 favorites.push(place);
 
 localStorage.setItem(
 "favorites",
-JSON.stringify(
-favorites
-)
+JSON.stringify(favorites)
 );
 
 alert(
@@ -391,140 +321,39 @@ alert(
 
 }
 
+function removeFavorite(place){
 
+let favorites=
+JSON.parse(
+localStorage.getItem("favorites")
+)||[];
 
-
-
-document
-.getElementById("offerBtn")
-?.addEventListener(
-"click",
-findOffer
+favorites=
+favorites.filter(
+item=>item!==place
 );
 
-
-
-
-
-function findOffer(){
-
-const place=
-document
-.getElementById("offerPlace")
-.value;
-
-const budget=
-parseInt(
-document
-.getElementById("budget")
-.value
-)||0;
-
-
-
-const filtered=
-offers.filter(offer=>
-
-offer.place===place &&
-
-offer.price<=budget
-
+localStorage.setItem(
+"favorites",
+JSON.stringify(favorites)
 );
 
-
-
-if(
-filtered.length===0
-){
-
-document
-.getElementById(
-"offerResult"
-)
-.innerHTML=
-"❌ Brak ofert";
-
-return;
+showFavorites();
 
 }
-
-
-
-filtered.sort(
-(a,b)=>
-b.rating-a.rating
-);
-
-
-
-const best=
-filtered[0];
-
-
-
-document
-.getElementById(
-"offerResult"
-)
-.innerHTML=`
-
-<div class="day">
-
-<h3>
-
-🏆 ${best.name}
-
-</h3>
-
-<p>
-💰 ${best.price} zł
-</p>
-
-<p>
-⭐ ${best.rating}
-</p>
-
-<p>
-📍 ${best.distance}
-</p>
-
-<p>
-
-🤖 Najlepszy stosunek jakości do ceny
-
-</p>
-
-</div>
-
-`;
-
-}
-
-document
-.getElementById("showFavoritesBtn")
-.addEventListener(
-"click",
-showFavorites
-
-);
 
 function showFavorites(){
 
 let favorites=
 JSON.parse(
-localStorage.getItem(
-"favorites"
-)
+localStorage.getItem("favorites")
 )||[];
-
 
 if(favorites.length===0){
 
-document
-.getElementById(
+document.getElementById(
 "favoritesResult"
-)
-.innerHTML=
+).innerHTML=
 "❌ Brak ulubionych miejsc";
 
 return;
@@ -539,7 +368,16 @@ html+=`
 
 <div class="day">
 
+<p>
 ❤️ ${place}
+</p>
+
+<button
+onclick="removeFavorite('${place}')">
+
+🗑 Usuń
+
+</button>
 
 </div>
 
@@ -547,10 +385,8 @@ html+=`
 
 });
 
-document
-.getElementById(
+document.getElementById(
 "favoritesResult"
-)
-.innerHTML=html;
+).innerHTML=html;
 
 }
