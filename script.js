@@ -286,41 +286,7 @@ stepClass="view";
 
 html+=`
 
-<div class="route-step ${stepClass}">
 
-<div class="route-title">
-${stop.icon} ${stop.name}
-</div>
-
-<div class="route-time">
-⏱ ${stop.time}
-</div>
-
-</div>
-
-`;
-
-});
-
-html+=`
-
-<div class="route-step end">
-
-<div class="route-title">
-🏁 ${to}
-</div>
-
-</div>
-
-</div>
-
-`;
-
-document
-.getElementById("routeResult")
-.innerHTML=html;
-
-}
 
 html+=`
 
