@@ -120,9 +120,7 @@ routes[key];
 if(!route){
 
 document
-.getElementById(
-"routeResult"
-)
+.getElementById("routeResult")
 .innerHTML=
 "❌ Brak danych";
 
@@ -130,41 +128,23 @@ return;
 
 }
 
-
-
 const wantsCastles=
-document
-.getElementById("castles")
-?.checked;
+document.getElementById("castles")?.checked;
 
 const wantsViews=
-document
-.getElementById("views")
-?.checked;
+document.getElementById("views")?.checked;
 
 const wantsFood=
-document
-.getElementById("food")
-?.checked;
-
-
+document.getElementById("food")?.checked;
 
 const avoidPaid=
-document
-.getElementById("expensive")
-?.checked;
+document.getElementById("expensive")?.checked;
 
 const avoidLong=
-document
-.getElementById("longStops")
-?.checked;
+document.getElementById("longStops")?.checked;
 
 const avoidCities=
-document
-.getElementById("cities")
-?.checked;
-
-
+document.getElementById("cities")?.checked;
 
 let filteredStops=
 route.stops.filter(stop=>{
@@ -196,26 +176,15 @@ return false;
 
 }
 
-
-
-if(
-avoidPaid &&
-stop.paid
-){
+if(avoidPaid && stop.paid){
 return false;
 }
 
-if(
-avoidLong &&
-stop.longStop
-){
+if(avoidLong && stop.longStop){
 return false;
 }
 
-if(
-avoidCities &&
-stop.city
-){
+if(avoidCities && stop.city){
 return false;
 }
 
@@ -223,95 +192,60 @@ return true;
 
 });
 
-
-
-if(
-filteredStops.length===0
-){
-filteredStops=
-route.stops;
+if(filteredStops.length===0){
+filteredStops=route.stops;
 }
-
-
 
 let html=`
 
 <h3>
-
-📍 ${from}
-→
-${to}
-
+📍 ${from} → ${to}
 </h3>
 
 <p>
-
 ⏱ ${route.travelTime}
-
 </p>
 
 `;
 
+filteredStops.forEach((stop,index)=>{
 
 html+=`
 
 <div class="day">
 
 <h4>
-
-${stop.icon}
-${stop.name}
-
+${stop.icon} ${stop.name}
 </h4>
 
-<p>
-⭐ ${stop.rating}
-</p>
+<p>⭐ ${stop.rating}</p>
 
-<p>
-💰 ${stop.price}
-</p>
+<p>💰 ${stop.price}</p>
 
 <button
 onclick="showDetails(${index})">
-
-Szczegóły
-
-</button>
+Szczegóły </button>
 
 <button
 onclick="addFavorite('${stop.name}')">
-
-❤️ Ulubione
-
-</button>
+❤️ Ulubione </button>
 
 <div
 id="details${index}"
 style="display:none;">
 
-<p>
-🚗 ${stop.parking}
-</p>
+<p>🚗 ${stop.parking}</p>
+
+<p>${stop.photo}</p>
+
+<p>${stop.description}</p>
 
 <p>
-${stop.photo}
-</p>
-
-<p>
-${stop.description}
-</p>
-
-<p>
-
 <a
 href="${stop.map}"
 target="_blank">
-
 🗺 Otwórz mapę
-
 </a>
-
 </p>
 
 </div>
@@ -322,7 +256,51 @@ target="_blank">
 
 });
 
+html+=`
 
+<div class="route-map">
+
+<div class="route-step start">
+
+<div class="route-title">
+📍 ${from}
+</div>
+
+</div>
+
+`;
+
+filteredStops.forEach(stop=>{
+
+let stepClass="";
+
+if(stop.icon.includes("🏰")){
+stepClass="castle";
+}
+else if(stop.icon.includes("🍽")){
+stepClass="food";
+}
+else if(stop.icon.includes("🌲")){
+stepClass="view";
+}
+
+html+=`
+
+<div class="route-step ${stepClass}">
+
+<div class="route-title">
+${stop.icon} ${stop.name}
+</div>
+
+<div class="route-time">
+⏱ ${stop.time}
+</div>
+
+</div>
+
+`;
+
+});
 
 html+=`
 
@@ -334,24 +312,14 @@ html+=`
 
 </div>
 
+</div>
+
 `;
 
+document
+.getElementById("routeResult")
+.innerHTML=html;
 
-
-filteredStops.forEach(stop=>{
-
-let stepClass="";
-
-if(stop.icon.includes("🏰")){
-stepClass="castle";
-}
-
-else if(stop.icon.includes("🍽")){
-stepClass="food";
-}
-
-else if(stop.icon.includes("🌲")){
-stepClass="view";
 }
 
 html+=`
