@@ -288,9 +288,10 @@ stepClass="view";
 
 html+=`
 
-<div class="route-step ${stepClass}">
+<div class="route-step end">
 
 <div class="route-title">
+🏁 ${to}
 
 ${stop.icon}
 ${stop.name}
