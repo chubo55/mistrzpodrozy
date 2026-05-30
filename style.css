@@ -115,7 +115,8 @@ border-left:6px solid #0b72ff;
 }
 
 .end{
-border-left:6px solid #0b72ff;
+border-left:6px solid #4caf50;
+background:red;
 }
 
 .favorites-header{
