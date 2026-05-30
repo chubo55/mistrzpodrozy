@@ -284,8 +284,6 @@ else if(stop.icon.includes("🌲")){
 stepClass="view";
 }
 
-html+=`
-
 
 
 html+=`
